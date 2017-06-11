@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#000000"
     >
     <EditText
         android:layout_width="match_parent"
@@ -18,15 +19,14 @@
         android:text="ADD"
         android:id="@+id/add"
         android:onClick="addListItem"/>
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_margin="15dp">
+
         <ListView
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/list"
-            ></ListView>
-    </ScrollView>
+            android:orientation="vertical"
+            android:id="@+id/list_view"
+            tools:context="package com.example.android.listmaker"
+            />
+
 </LinearLayout>
