@@ -8,21 +8,51 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
     ArrayList<String> list = new ArrayList<String>();
+    ListView listView;
+    ArrayAdapter<String> itemsAdapter;
+
 
     public void addListItem(View view){
 
         EditText et = (EditText) findViewById(R.id.edit_text);
         list.add(et.getText().toString());
         et.setText("");
-        final ListView listView = (ListView) findViewById(R.id.list_view);
-        ArrayAdapter<String> itemsAdapter =
+
+
+
+    }/** above function called when ADD button is clicked, copies the listitem from EditText to list*/
+
+    public void deleteListItem(View view){
+        EditText ed = (EditText) findViewById(R.id.delete);
+        int position = Integer.parseInt(ed.getText().toString());
+        ed.setText("");
+        if(position<=0){Toast.makeText(getApplicationContext(),"positions are positive integers -_-",Toast.LENGTH_SHORT
+        ).show();}
+        else if(position>list.size()){
+            Toast.makeText(getApplicationContext(),"no element to delete daw",Toast.LENGTH_SHORT).show();}
+        else{ list.remove(position-1);
+              listView.setAdapter(itemsAdapter);
+        }
+
+    } /**above function to delete element*/
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+         listView = (ListView) findViewById(R.id.list_view);
+        itemsAdapter =
                 new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
+
         listView.setAdapter(itemsAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
@@ -37,19 +67,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(numbersIntent);
             }
         });
-
-
-    }/** above function called when ADD button is clicked, copies the listitem from EditText to list*/
-
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-
     }
+
+
 
 
 

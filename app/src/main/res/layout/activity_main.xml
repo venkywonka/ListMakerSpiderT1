@@ -11,6 +11,8 @@
         android:layout_height="wrap_content"
         android:hint="List Item"
         android:id="@+id/edit_text"
+        android:textColorHint="#9E9E9E"
+        android:layout_marginTop="25dp"
         />
     <Button
         android:layout_width="wrap_content"
@@ -23,10 +25,25 @@
         <ListView
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:orientation="vertical"
             android:id="@+id/list_view"
+            android:layout_weight="1"
             tools:context="package com.example.android.listmaker"
             />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter the position"
+        android:textColorHint="#9E9E9E"
+        android:id="@+id/delete"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="135dp"
+        android:text="DELETE"
+        android:id="@+id/del_button"
+        android:onClick="deleteListItem" />
 
 </LinearLayout>
